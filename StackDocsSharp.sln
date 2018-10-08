@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackDocsSharp", "StackDocsSharp\StackDocsSharp.csproj", "{3AE8C867-A0EE-4632-8E6E-23B99B7CDCEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackDocsSharp.Tests", "StackDocsSharp.Tests\StackDocsSharp.Tests.csproj", "{F853F8F3-DA6A-4536-830D-3FB3E530FDBE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3AE8C867-A0EE-4632-8E6E-23B99B7CDCEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AE8C867-A0EE-4632-8E6E-23B99B7CDCEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AE8C867-A0EE-4632-8E6E-23B99B7CDCEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AE8C867-A0EE-4632-8E6E-23B99B7CDCEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F853F8F3-DA6A-4536-830D-3FB3E530FDBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F853F8F3-DA6A-4536-830D-3FB3E530FDBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F853F8F3-DA6A-4536-830D-3FB3E530FDBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F853F8F3-DA6A-4536-830D-3FB3E530FDBE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6BD87446-FE48-473B-A7ED-5D198E22B951}
+	EndGlobalSection
+EndGlobal
