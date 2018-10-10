@@ -7,11 +7,16 @@ using System.Web.UI.WebControls;
 
 namespace StackDocsSharp
 {
-    public partial class Contact : Page
+    public partial class Page2 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void Back_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("TableData.aspx");
         }
     }
 }

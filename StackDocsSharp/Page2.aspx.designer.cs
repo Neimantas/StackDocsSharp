@@ -11,7 +11,7 @@ namespace StackDocsSharp
 {
 
 
-    public partial class Contact
+    public partial class Page2
     {
     }
 }
