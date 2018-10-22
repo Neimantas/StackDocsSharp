@@ -1,42 +1,43 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="StackDocsSharp._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:DropDownList ID="DropDownList1" runat="server">
+        <asp:ListItem ID="lang1">Java</asp:ListItem>
+        <asp:ListItem ID="lang2">Python</asp:ListItem>
+        <asp:ListItem ID="lang3">JavaScript</asp:ListItem>
+        <asp:ListItem ID="lang4">C#</asp:ListItem>
+        <asp:ListItem ID="lang5">Ruby</asp:ListItem>
+        <asp:ListItem ID="lang6">CSS</asp:ListItem>
+        <asp:ListItem ID="lang7">R#</asp:ListItem>
+</asp:DropDownList>
+    <asp:TextBox ID="wordas" runat="server" type="text" style="width: 348px; height: 20px" />
+    <asp:Button ID="Button1" runat="server" Text="Button" style="margin-left: 82" Width="106px" OnClick="Button1_Click" />
+        
+    
+    <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+    
 
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
-    </div>
-
-</asp:Content>
+    <asp:Table id="tabMarkup" runat="server" Visible="false" >
+        <asp:TableRow HorizontalAlign="Center"  
+                      TableSection="TableHeader"
+                  BackColor="#FFFF80" 
+                  Font-Bold="True">
+          <asp:TableCell Width="100px" Text="Language"> 
+          </asp:TableCell>
+          <asp:TableCell Width="100px" Text="Search Result">
+          </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow HorizontalAlign="Center" 
+                  BackColor="#FFFFC0">
+          <asp:TableCell ID="langText" runat="server" Text=""></asp:TableCell>
+          <asp:TableCell ID="searchText" Text=""></asp:TableCell>
+        </asp:TableRow>
+        <%--<asp:TableRow HorizontalAlign="Center"
+                  BackColor="#FFFFC0">
+          <asp:TableCell Text="45.3"></asp:TableCell>
+          <asp:TableCell Text="16.5"></asp:TableCell>
+        </asp:TableRow>--%>
+      </asp:Table>
+    
+    
+</asp:Content> 

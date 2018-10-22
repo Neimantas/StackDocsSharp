@@ -10,7 +10,7 @@
 namespace StackDocsSharp {
     
     
-    public partial class _Default {
+    public partial class TableData {
         
         /// <summary>
         /// DropDownList1 control.
@@ -85,13 +85,13 @@ namespace StackDocsSharp {
         protected global::System.Web.UI.WebControls.ListItem lang7;
         
         /// <summary>
-        /// wordas control.
+        /// text1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox wordas;
+        protected global::System.Web.UI.WebControls.TextBox text1;
         
         /// <summary>
         /// Button1 control.
@@ -103,39 +103,21 @@ namespace StackDocsSharp {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// Label1 control.
+        /// Table1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Table Table1;
         
         /// <summary>
-        /// tabMarkup control.
+        /// tabel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tabMarkup;
-        
-        /// <summary>
-        /// langText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell langText;
-        
-        /// <summary>
-        /// searchText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell searchText;
+        protected global::System.Web.UI.WebControls.Label tabel1;
     }
 }
