@@ -37,7 +37,6 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -58,11 +57,21 @@
             </div>
         </div>
         <div class="container body-content">
+            <asp:ContentPlaceHolder ID="starter" runat="server">
+             
+            </asp:ContentPlaceHolder>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
+
+            <asp:ContentPlaceHolder ID="MainTable" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <asp:ContentPlaceHolder ID="Page2" runat="server">
+            </asp:ContentPlaceHolder>
             <hr />
+            
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Made by ASP.NET</p>
             </footer>
         </div>
 
