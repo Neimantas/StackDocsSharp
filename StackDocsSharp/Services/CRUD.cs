@@ -22,7 +22,7 @@ namespace StackDocsSharp.Services
             DataTable dt = new DataTable();
 
             SQLiteCommand cmd = new SQLiteCommand(conn);
-            cmd.CommandText = "SELECT * FROM" + table;
+            cmd.CommandText = "SELECT * FROM " + table;
             SQLiteDataReader reader = cmd.ExecuteReader();
             dt.Load(reader);
             reader.Close();
