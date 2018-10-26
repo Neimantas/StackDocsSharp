@@ -28,16 +28,29 @@
 		  <div class="modal-dialog" role="document">
 			<div class="modal-content">
 			  <div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLongTitle">Examples</h5>
+				<h5 class="modal-title" id="exampleModalLongTitle">@Examples.Title</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				  <span aria-hidden="true">&times;</span>
 				</button>
 			  </div>
-			  <div class="modal-body">
+			  <div class="modal-body" id="exampleBody">
 				<ul id="exampleList"></ul>
 				<script>
 					function addExamples(){
 						//for @topics.exampleCount add new <a href= @Examples.ExampleId> etc 
+						let listExample = document.createElement("ul");
+						let bodyExample = document.getElementById("exampleBody");
+						bodyExample.AppendChild(listExample);
+						for(let i=0;i<@Topics.ExampleCount;i++){
+							let exampleLink = document.createElement("a");
+							exampleLink.text = @Examples[i].Title;
+							exampleLink.href = "javascript:setexample(i)";
+							listExample.appendChild(exampleLink);
+						}
+					}
+					function setexample(i){
+						let bodyExample = document.getElementById("exampleBody")
+						bodyExample.text = @Examples[i].BodyHtml;
 					}
 				</script>
 			  </div>
