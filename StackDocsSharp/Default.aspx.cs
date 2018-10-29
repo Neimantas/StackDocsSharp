@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StackDocsSharp.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,17 @@ namespace StackDocsSharp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-          
+            if (!Page.IsPostBack)
+            {
+                IHigher higher = new IHigher();
+
+                List<string> naujas = higher.GetTopicsList();
+
+                foreach (string topic in naujas)
+                {
+                    DropDownList1.Items.Add(new ListItem(topic, topic.ToLower()));
+                }
+            }
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
