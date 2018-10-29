@@ -11,7 +11,7 @@ namespace StackDocsSharp.Services
     public class IDataBase
     {
 
-        private string _conUrl = "Data source = C:/Users/StroGnt/Documents/StackDocsSharp/Database/DB.db ; New=false; Foreign Keys = True;";
+        private string _conUrl = "Data source = C:\\Users\\" + Environment.UserName + "\\Documents\\StackDocsSharp\\Database\\DB.db ; New=false; Foreign Keys = True;";
 
         public IDataBase()
         {
