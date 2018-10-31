@@ -1,26 +1,27 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
 
 namespace StackDocsSharp.Services
 {
     public class IHigher
     {
-        public string readData()
+        CRUD readData = new CRUD();
+
+        List<string> listTopics = new List<string>();
+       
+        public List<string> GetTopicsList()
         {
-            CRUD readData = new CRUD();
+            DataTable dt = new DataTable();
+            dt = readData.Read("Doctags");
 
-            //    List<string> listTopics = new List<string>();
-
-            DataTable dt = readData.Read("Topics");
-
-            string val = "";
-
-            if (dt.Rows.Count > 0)
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
-                val = dt.Rows[1]["Title"].ToString();
+                listTopics.Add(dt.Rows[i]["Title"].ToString());
+                
             }
 
-            return val;
+            return listTopics;
         }
     }
 }
