@@ -7,20 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StackDocsSharp {
-    
-    
-    public partial class SiteMaster {
-        
+namespace StackDocsSharp
+{
+
+
+    public partial class SiteMaster
+    {
+
         /// <summary>
-        /// starter control.
+        /// HeadContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder starter;
-        
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
+
         /// <summary>
         /// MainContent control.
         /// </summary>
@@ -29,23 +31,5 @@ namespace StackDocsSharp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
-        
-        /// <summary>
-        /// MainTable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainTable;
-        
-        /// <summary>
-        /// Page2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Page2;
     }
 }
