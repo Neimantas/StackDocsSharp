@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StackDocsSharp {
-    
-    
-    public partial class _Default {
-        
+namespace StackDocsSharp
+{
+
+
+    public partial class _Default
+    {
+
         /// <summary>
         /// DropDownList1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace StackDocsSharp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
-        
+
         /// <summary>
         /// wordas control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace StackDocsSharp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox wordas;
-        
+
         /// <summary>
         /// Button1 control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace StackDocsSharp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
-        
+
         /// <summary>
         /// Label1 control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace StackDocsSharp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-        
+
         /// <summary>
         /// tabMarkup control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace StackDocsSharp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table tabMarkup;
-        
+
         /// <summary>
         /// langText control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace StackDocsSharp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TableCell langText;
-        
+
         /// <summary>
         /// searchText control.
         /// </summary>
