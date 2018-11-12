@@ -15,7 +15,7 @@ namespace StackDocsSharp.Services
         public DataTable Read(string table)
         
         {
-            IDataBase db  = new IDataBase();
+            DataBase db  = new DataBase();
             var conn = db.GetConnection();
             conn.Open();
 

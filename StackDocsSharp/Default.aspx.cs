@@ -1,4 +1,5 @@
-﻿using StackDocsSharp.Services;
+﻿using SimpleInjector;
+using StackDocsSharp.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,18 @@ namespace StackDocsSharp
 {
     public partial class _Default : Page
     {
+        private IHigher _higher;
+
+        public _Default()
+        {
+            _higher = ContainerInjector.Container.GetInstance<IHigher>();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
-            {
-                IHigher higher = new IHigher();
-
-                List<string> naujas = higher.GetTopicsList();
+            { 
+                List<string> naujas = _higher.GetTopicsList();
 
                 foreach (string topic in naujas)
                 {

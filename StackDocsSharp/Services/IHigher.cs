@@ -1,27 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using System.Data.SQLite;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace StackDocsSharp.Services
 {
-    public class IHigher
+    public interface IHigher
     {
-        CRUD readData = new CRUD();
-
-        List<string> listTopics = new List<string>();
-       
-        public List<string> GetTopicsList()
-        {
-            DataTable dt = new DataTable();
-            dt = readData.Read("Doctags");
-
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                listTopics.Add(dt.Rows[i]["Title"].ToString());
-                
-            }
-
-            return listTopics;
-        }
+        List<string> GetTopicsList();
     }
 }
