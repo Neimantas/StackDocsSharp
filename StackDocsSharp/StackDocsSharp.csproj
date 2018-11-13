@@ -239,6 +239,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BL\BLTopics.cs" />
+    <Compile Include="Models\Const\CrudArgs.cs" />
     <Compile Include="Models\DAL\DALDoctags.cs" />
     <Compile Include="Models\DAL\DALExamples.cs" />
     <Compile Include="Models\DAL\DALTopics.cs" />
@@ -246,6 +248,7 @@
     <Compile Include="Services\CRUD.cs" />
     <Compile Include="Services\IDataBase.cs" />
     <Compile Include="Services\IHigher.cs" />
+    <Compile Include="Services\ILower.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -277,7 +280,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Const\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

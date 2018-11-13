@@ -14,7 +14,7 @@ namespace StackDocsSharp
         {
             if (!Page.IsPostBack)
             {
-                IHigher higher = new IHigher();
+                ILower higher = new ILower();
 
                 List<string> naujas = higher.GetTopicsList();
 
