@@ -2,34 +2,16 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
-    <asp:TextBox ID="wordas" runat="server" type="text" style="width: 348px; height: 20px" />
     <asp:Button ID="Button1" runat="server" Text="Button" style="margin-left: 82" Width="106px" OnClick="Button1_Click" />
-        
-    
+
     <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
     
+    <div class="row">
+            <asp:GridView ID="gwtopics" runat="server" DataKeyNames="DocTagID" AutoGenerateColumns="false" GridLines="None">
+                <Columns>
+                    <asp:HyperLinkField DataTextField="Title" HeaderText="Topics" DataNavigateUrlFormatString="~/Topics.aspx?Title={0}&DocTagID={1}" DataNavigateUrlFields="Title,DocTagID" />
+                </Columns>
+            </asp:GridView>
+        </div>
 
-    <asp:Table id="tabMarkup" runat="server" Visible="false" >
-        <asp:TableRow HorizontalAlign="Center"  
-                      TableSection="TableHeader"
-                  BackColor="#FFFF80" 
-                  Font-Bold="True">
-          <asp:TableCell Width="100px" Text="Language"> 
-          </asp:TableCell>
-          <asp:TableCell Width="100px" Text="Search Result">
-          </asp:TableCell>
-        </asp:TableRow>
-        <asp:TableRow HorizontalAlign="Center" 
-                  BackColor="#FFFFC0">
-          <asp:TableCell ID="langText" runat="server" Text=""></asp:TableCell>
-          <asp:TableCell ID="searchText" Text=""></asp:TableCell>
-        </asp:TableRow>
-        <%--<asp:TableRow HorizontalAlign="Center"
-                  BackColor="#FFFFC0">
-          <asp:TableCell Text="45.3"></asp:TableCell>
-          <asp:TableCell Text="16.5"></asp:TableCell>
-        </asp:TableRow>--%>
-      </asp:Table>
-    
-    
 </asp:Content> 

@@ -22,15 +22,6 @@ namespace StackDocsSharp {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
         
         /// <summary>
-        /// wordas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox wordas;
-        
-        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>
@@ -49,30 +40,12 @@ namespace StackDocsSharp {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// tabMarkup control.
+        /// gwtopics control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tabMarkup;
-        
-        /// <summary>
-        /// langText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell langText;
-        
-        /// <summary>
-        /// searchText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell searchText;
+        protected global::System.Web.UI.WebControls.GridView gwtopics;
     }
 }
