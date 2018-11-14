@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
-using StackDocsSharp.Models.Const;
 
 namespace StackDocsSharp.Services
 {
@@ -15,7 +14,7 @@ namespace StackDocsSharp.Services
 
         public DataTable Read(string table, params CrudArgs[] argarray)
         {
-            IDataBase db = new IDataBase();
+            DataBase db = new DataBase();
             var conn = db.GetConnection();
             conn.Open();
 
@@ -49,17 +48,6 @@ namespace StackDocsSharp.Services
             conn.Close();
             return dt;
         }
-        private string WhereStringBuilder(params CrudArgs[] argarray)
-        {
-
-            string whereString = " Where 1=1";
-            if (argarray.Length > 0)
-            {
-                for (int i = 0; i < argarray.Length; i++)
-                {
-                    whereString += " AND " + argarray[i].column + " " + argarray[i].argument + " " + "'" + argarray[i].value + "'";
-                }
-            }
 
         private string WhereStringBuilder(params CrudArgs[] argarray)
         {
@@ -83,5 +71,4 @@ namespace StackDocsSharp.Services
         {
         }
     }
-
 }
