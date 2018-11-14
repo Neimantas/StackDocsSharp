@@ -1,7 +1,4 @@
-﻿using System.Web.Http;
-using SimpleInjector;
-using SimpleInjector.Lifestyles;
-using SimpleInjector.Integration.WebApi;
+﻿using SimpleInjector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,10 +23,12 @@ namespace StackDocsSharp
 
             container.Register<IHigher, Higher>();
             container.Register<IDataBase, DataBase>();
+            container.Register<ILower, Lower>();
 
             container.Verify();
 
             ContainerInjector.Container = container;
+
         }
     }
 }

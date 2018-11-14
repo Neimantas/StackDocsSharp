@@ -10,7 +10,6 @@ namespace StackDocsSharp.Services
 {
     public class DataBase : IDataBase
     {
-
         private string _conUrl = "Data source = C:\\Users\\" + Environment.UserName + "\\Documents\\StackDocsSharp\\Database\\DB.db ; New=false; Foreign Keys = True;";
 
         public DataBase()
@@ -28,10 +27,6 @@ namespace StackDocsSharp.Services
             catch (SQLiteException ex) { Console.WriteLine(ex.ToString()); }
 
             return null;
-
         }
     }
 }
-
-
-

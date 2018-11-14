@@ -6,7 +6,7 @@ using System.Web;
 
 namespace StackDocsSharp.Services
 {
-    public static class ContainerInjector
+    public class ContainerInjector
     {
         public static Container Container;
     }

@@ -6,40 +6,48 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using StackDocsSharp.Models.DAL;
+using System.Data;
+using StackDocsSharp.Models.Const;
 
 namespace StackDocsSharp
 {
     public partial class _Default : Page
     {
-        private IHigher _higher;
+        private ILower _lower;
 
         public _Default()
         {
-            _higher = ContainerInjector.Container.GetInstance<IHigher>();
+            _lower = ContainerInjector.Container.GetInstance<ILower>();
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             { 
-                List<string> naujas = _higher.GetTopicsList();
+                var dropDown = _lower.ReadDALDoctags();
 
-                foreach (string topic in naujas)
-                {
-                    DropDownList1.Items.Add(new ListItem(topic, topic.ToLower()));
+                foreach (var language in dropDown)
+                {             
+                    DropDownList1.Items.Add(new ListItem(language.title, language.id));
                 }
             }
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            tabMarkup.Visible = true;
-            langText.Text = DropDownList1.SelectedValue;
-            searchText.Text = wordas.Text;
+            GetTopics(DropDownList1.SelectedValue);
         }
 
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        public void GetTopics(string lang)
         {
-
+            var readTopics = new CRUD();
+           
+            CrudArgs[] argArray = new CrudArgs[] { new CrudArgs("DocTagId", "=", lang) };
+                                  
+            var topicsData = readTopics.Read("Topics", argArray);
+            gwtopics.DataSource = topicsData;
+            gwtopics.DataBind();
+            
         }
     }
 }

@@ -1,27 +1,54 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using System.Data.SQLite;
+﻿using StackDocsSharp.Models.BL;
+using StackDocsSharp.Models.Const;
+using StackDocsSharp.Models.DAL;
+using System.Collections.Generic;
 
 namespace StackDocsSharp.Services
 {
     public class Higher : IHigher
     {
-        CRUD readData = new CRUD();
+        private Lower _lower;
 
-        List<string> listTopics = new List<string>();
-       
+        public Higher()
+        {
+            _lower = new Lower();
+        }
+
         public List<string> GetTopicsList()
         {
-            DataTable dt = new DataTable();
-            dt = readData.Read("Doctags");
+            List<string> listTopics = new List<string>();
+            List<DALDoctags> list = _lower.ReadDALDoctags();
 
-            for (int i = 0; i < dt.Rows.Count; i++)
+            for (int i = 0; i < list.Count; i++)
             {
-                listTopics.Add(dt.Rows[i]["Title"].ToString());
-                
+                listTopics.Add(list[i].title);
             }
 
             return listTopics;
+        }
+
+        public List<BLTopics> GetTopics(params CrudArgs[] args)
+        {
+            List<BLTopics> topicsFormatted = new List<BLTopics>();
+            List<DALTopics> dalTopics = _lower.ReadDALTopics(args);
+            foreach (DALTopics topic in dalTopics)
+            {
+                string concat = ConcatExamplesByTopicId(topic.id);
+                topicsFormatted.Add(new BLTopics(topic, concat));
+            }
+
+            return topicsFormatted;
+        }
+
+        public string ConcatExamplesByTopicId(string id)//sumeta i viena stringa examples
+        {
+            List<DALExamples> list = _lower.ReadDALExamples(new CrudArgs("DocTopicId", "=", id));
+            string concat = "";
+            foreach (DALExamples obj in list)
+            {
+                concat += "<h3>" + obj.title + "</h3>" + obj.bodyHTML;
+            }
+            return concat;
         }
     }
 }

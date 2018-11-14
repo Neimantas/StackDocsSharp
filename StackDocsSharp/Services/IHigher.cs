@@ -1,13 +1,15 @@
-﻿using System;
+﻿using StackDocsSharp.Models.BL;
+using StackDocsSharp.Models.Const;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StackDocsSharp.Services
 {
     public interface IHigher
     {
         List<string> GetTopicsList();
+
+        List<BLTopics> GetTopics(params CrudArgs[] args);
+
+        string ConcatExamplesByTopicId(string id);
     }
 }
