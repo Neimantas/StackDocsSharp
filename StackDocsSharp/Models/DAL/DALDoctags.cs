@@ -12,11 +12,11 @@ namespace StackDocsSharp.Models.DAL
 
         public DALDoctags(DataRow row)
         {
-            id = (string)row["Id"];
+            id = row["Id"].ToString();
             title = (string)row["Title"];
-            helloWorldDocTopicId = (string)row["HelloWorldDocTopicId"];
-            topicCount = (string)row["TopicCount"];
-            creationDate = (string)row["CreationDate"];
+            helloWorldDocTopicId = row["HelloWorldDocTopicId"].ToString();
+            topicCount = row["TopicCount"].ToString();
+            creationDate = row["CreationDate"].ToString();
             tag = (string)row["Tag"];
         }
     }

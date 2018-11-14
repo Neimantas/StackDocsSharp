@@ -53,16 +53,12 @@ namespace StackDocsSharp.Services
         private string WhereStringBuilder(params CrudArgs[] argarray)
         {
 
-            string whereString = " ";
-            if (argarray.Length > 1)
+            string whereString = " Where 1=1";
+            if (argarray.Length > 0)
             {
                 for (int i = 0; i < argarray.Length; i++)
                 {
-                    if (i > 0)
-                    {
-                        whereString += " AND ";
-                    }
-                    whereString += argarray[i].column + " " + argarray[i].argument + " " + argarray[i].value;
+                    whereString += " AND " + argarray[i].column + " " + argarray[i].argument + " " + "'" + argarray[i].value + "'";
                 }
             }
 
