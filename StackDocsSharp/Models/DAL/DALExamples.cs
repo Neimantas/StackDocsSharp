@@ -9,8 +9,8 @@ namespace StackDocsSharp.Models.DAL
 
         public DALExamples(DataRow row)
         {
-            docTopicId = (string)row["DocTopicId"];
-            id = (string)row["Id"];
+            docTopicId = row["DocTopicId"].ToString();
+            id = row["Id"].ToString();
             title = (string)row["Title"];
             bodyHTML = (string)row["BodyHtml"];
             isPinned = (bool)row["IsPinned"];

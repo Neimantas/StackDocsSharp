@@ -13,8 +13,8 @@ namespace StackDocsSharp.Models.DAL
 
         public DALTopics(DataRow row)
         {
-            docTagId = (string)row["DocTagId"];
-            id = (string)row["Id"];
+            docTagId = row["DocTagId"].ToString();
+            id = row["Id"].ToString();
             title = (string)row["Title"];
             introductionHTML = (string)row["IntroductionHtml"];
             parametersHTML = (string)row["ParametersHtml"];
