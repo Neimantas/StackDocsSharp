@@ -8,5 +8,7 @@ namespace StackDocsSharp.Services
     public interface IHigher
     {
         List<string> GetTopicsList();
+
+        List<BLTopics> GetTopics(params CrudArgs[] args);
     }
 }

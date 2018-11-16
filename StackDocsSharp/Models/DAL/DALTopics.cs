@@ -8,8 +8,8 @@ namespace StackDocsSharp.Models.DAL
 {
     public class DALTopics
     {
-        public string id, docTagId, exampleCount, exampleScore, title, introductionHTML, syntaxHTML, parametersHTML, remarksHTML, helloWorldVersionsHTML;
-        public bool isHelloWorldTopic;
+        public string id, docTagId, exampleCount, exampleScore, title, introductionHTML, syntaxHTML, parametersHTML, remarksHTML, helloWorldVersionsHTML, isHelloWorldTopic;
+        //public bool isHelloWorldTopic;
 
         public DALTopics(DataRow row)
         {
@@ -21,7 +21,7 @@ namespace StackDocsSharp.Models.DAL
             remarksHTML = (string)row["RemarksHtml"];
             syntaxHTML = (string)row["SyntaxHtml"];
             helloWorldVersionsHTML = (string)row["HelloWorldVersionsHtml"];
-            isHelloWorldTopic = (bool)row["IsHelloWorldTopic"];
+            isHelloWorldTopic = row["IsHelloWorldTopic"].ToString();
         }
     }
 }

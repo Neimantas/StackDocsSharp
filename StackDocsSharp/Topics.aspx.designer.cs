@@ -22,13 +22,13 @@ namespace StackDocsSharp {
         protected global::System.Web.UI.WebControls.Label TopicTitle;
         
         /// <summary>
-        /// gwtopics control.
+        /// modallbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gwtopics;
+        protected global::System.Web.UI.WebControls.Label modallbl;
         
         /// <summary>
         /// lblHello control.
@@ -38,6 +38,15 @@ namespace StackDocsSharp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblHello;
+        
+        /// <summary>
+        /// lblIntro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblIntro;
         
         /// <summary>
         /// lblParameters control.

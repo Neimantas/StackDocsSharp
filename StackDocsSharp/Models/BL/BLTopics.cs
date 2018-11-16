@@ -9,8 +9,8 @@ namespace StackDocsSharp.Models.BL
     public class BLTopics
     {
         public string id, docTagId, exampleCount, exampleScore, title, introductionHTML, syntaxHTML, 
-            parametersHTML, remarksHTML, helloWorldVersionsHTML, exampleText;
-        public bool isHelloWorldTopic;
+            parametersHTML, remarksHTML, helloWorldVersionsHTML, exampleText, isHelloWorldTopic;
+       // public bool isHelloWorldTopic;
 
         public BLTopics(DALTopics o, string examples) //reikia DAL ir concat examples string
         {

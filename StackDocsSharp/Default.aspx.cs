@@ -40,7 +40,7 @@ namespace StackDocsSharp
             GetTopics(DropDownList1.SelectedValue);
         }
 
-        public void GetTopics(string lang)
+        protected void GetTopics(string lang)
         {
             var readTopics = new CRUD();
            
