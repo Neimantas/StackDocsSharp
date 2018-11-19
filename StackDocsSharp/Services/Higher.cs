@@ -17,7 +17,7 @@ namespace StackDocsSharp.Services
         public List<string> GetTopicsList()
         {
             List<string> listTopics = new List<string>();
-            List<DALDoctags> list = _lower.ReadDALDoctags();
+            List<DALDoctags> list = _lower.ReadDALDoctags(new List<CrudArgs>());
 
             for (int i = 0; i < list.Count; i++)
             {
@@ -27,7 +27,7 @@ namespace StackDocsSharp.Services
             return listTopics;
         }
 
-        public List<BLTopics> GetTopics(params CrudArgs[] args)
+        public List<BLTopics> GetTopics(List<CrudArgs> args)
         {
             List<BLTopics> topicsFormatted = new List<BLTopics>();
             List<DALTopics> dalTopics = _lower.ReadDALTopics(args);
@@ -42,7 +42,7 @@ namespace StackDocsSharp.Services
 
         public string ConcatExamplesByTopicId(string id)//sumeta i viena stringa examples
         {
-            List<DALExamples> list = _lower.ReadDALExamples(new CrudArgs("DocTopicId", "=", id));
+            List<DALExamples> list = _lower.ReadDALExamples(new List<CrudArgs>() { new CrudArgs("DocTopicId", "=", id) } );
             string concat = "";
             foreach (DALExamples obj in list)
             {

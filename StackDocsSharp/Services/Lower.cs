@@ -9,7 +9,7 @@ namespace StackDocsSharp.Services
 {
     public class Lower : ILower
     {
-        public List<DALTopics> ReadDALTopics(params CrudArgs[] args)
+        public List<DALTopics> ReadDALTopics(List<CrudArgs> args)
         {
             CRUD readData = new CRUD();
             DataRow[] rows = readData.Read("Topics", args).Select();
@@ -21,7 +21,7 @@ namespace StackDocsSharp.Services
             return list;
         }
 
-        public List<DALDoctags> ReadDALDoctags(params CrudArgs[] args)
+        public List<DALDoctags> ReadDALDoctags(List<CrudArgs> args)
         {
             CRUD readData = new CRUD();
             DataRow[] rows = readData.Read("DocTags", args).Select();
@@ -33,7 +33,7 @@ namespace StackDocsSharp.Services
             return list;
         }
 
-        public List<DALExamples> ReadDALExamples(params CrudArgs[] args)
+        public List<DALExamples> ReadDALExamples(List<CrudArgs> args)
         {
             CRUD readData = new CRUD();
             DataRow[] rows = readData.Read("Examples", args).Select();

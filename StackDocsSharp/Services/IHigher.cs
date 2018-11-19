@@ -9,6 +9,6 @@ namespace StackDocsSharp.Services
     {
         List<string> GetTopicsList();
 
-        List<BLTopics> GetTopics(params CrudArgs[] args);
+        List<BLTopics> GetTopics(List<CrudArgs> args);
     }
 }

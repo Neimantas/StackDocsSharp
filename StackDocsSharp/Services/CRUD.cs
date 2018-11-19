@@ -12,14 +12,14 @@ namespace StackDocsSharp.Services
         {
         }
 
-        public DataTable Read(string table, params CrudArgs[] argarray)
+        public DataTable Read(string table, List<CrudArgs> args)
         {
             DataBase db = new DataBase();
             var conn = db.GetConnection();
             conn.Open();
 
             SQLiteCommand cmd = new SQLiteCommand(conn);
-            cmd.CommandText = "SELECT * FROM " + table + WhereStringBuilder(argarray) + ";";
+            cmd.CommandText = "SELECT * FROM " + table + WhereStringBuilder(args) + ";";
             SQLiteDataReader reader = cmd.ExecuteReader();
             DataTable tableSchema = reader.GetSchemaTable();
             DataTable dt = new DataTable();
@@ -49,14 +49,14 @@ namespace StackDocsSharp.Services
             return dt;
         }
 
-        private string WhereStringBuilder(params CrudArgs[] argarray)
+        private string WhereStringBuilder(List<CrudArgs> args)
         {
             string whereString = " Where 1=1";
-            if (argarray.Length > 0)
+            if (args.Count > 0)
             {
-                for (int i = 0; i < argarray.Length; i++)
+                for (int i = 0; i < args.Count; i++)
                 {
-                    whereString += " AND " + argarray[i].column + " " + argarray[i].argument + " " + "'" + argarray[i].value + "'";
+                    whereString += " AND " + args[i].column + " " + args[i].argument + " " + "'" + args[i].value + "'";
                 }
             }
 
