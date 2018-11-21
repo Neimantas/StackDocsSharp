@@ -30,7 +30,7 @@ namespace StackDocsSharp
         }
 
         protected string GetExamples(string TopicID) {
-            var readExamples = _higher.GetTopics(new CrudArgs("Id", "=", TopicID));
+            var readExamples = _higher.GetTopics(new List<CrudArgs> { new CrudArgs("Id", "=", TopicID) });
             return readExamples[0].exampleText;
           
             
@@ -40,7 +40,7 @@ namespace StackDocsSharp
         {
             var readTopics = new CRUD();
            
-            CrudArgs[] argCombo = new CrudArgs[] { (new CrudArgs("Title", "=", topicTitle)), (new CrudArgs("DocTagID", "=", ID)) };
+            List<CrudArgs> argCombo = new List<CrudArgs> { (new CrudArgs("Title", "=", topicTitle)), (new CrudArgs("DocTagID", "=", ID)) };
             
             var topicsData = readTopics.Read("Topics",argCombo);
             

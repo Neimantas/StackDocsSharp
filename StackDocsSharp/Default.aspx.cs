@@ -25,7 +25,10 @@ namespace StackDocsSharp
         {
             if (!Page.IsPostBack)
             { 
-                var dropDown = _lower.ReadDALDoctags();
+                var dropDown = _lower.ReadDALDoctags(new List<CrudArgs> { });
+                var readDocTags = new CRUD();
+                readDocTags.Read("DocTags", new List<CrudArgs> { });
+
 
                 foreach (var language in dropDown)
                 {             
@@ -35,6 +38,14 @@ namespace StackDocsSharp
 
             }
         }
+
+        protected void gwtopics_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gwtopics.PageIndex = e.NewPageIndex;
+            GetTopics(DropDownList1.SelectedValue);
+
+        }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
             GetTopics(DropDownList1.SelectedValue);
@@ -44,7 +55,7 @@ namespace StackDocsSharp
         {
             var readTopics = new CRUD();
            
-            CrudArgs[] argArray = new CrudArgs[] { new CrudArgs("DocTagId", "=", lang) };
+            List<CrudArgs> argArray = new List<CrudArgs> { new CrudArgs("DocTagId", "=", lang) };
                                   
             var topicsData = readTopics.Read("Topics", argArray);
             gwtopics.DataSource = topicsData;
