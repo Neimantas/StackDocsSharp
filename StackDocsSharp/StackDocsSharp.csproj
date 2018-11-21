@@ -243,6 +243,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BL\BLTopics.cs" />
+    <Compile Include="Models\BL\SearchResult.cs" />
     <Compile Include="Models\Const\CrudArgs.cs" />
     <Compile Include="Models\DAL\DALDoctags.cs" />
     <Compile Include="Models\DAL\DALExamples.cs" />
@@ -256,6 +257,7 @@
     <Compile Include="Services\IHigher.cs" />
     <Compile Include="Services\ILower.cs" />
     <Compile Include="Services\Lower.cs" />
+    <Compile Include="Services\SearchEngine.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

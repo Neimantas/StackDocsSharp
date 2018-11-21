@@ -8,6 +8,13 @@ namespace StackDocsSharp.Models.BL
     public class SearchResult
     {
         string title, text;
-        int id;
+        private string id;
+
+        public SearchResult(string a, string b, string c)
+        {
+            id = a;
+            title = b;
+            text = c;
+        }
     }
 }

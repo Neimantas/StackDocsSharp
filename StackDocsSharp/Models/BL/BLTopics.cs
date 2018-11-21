@@ -8,8 +8,8 @@ namespace StackDocsSharp.Models.BL
 {
     public class BLTopics
     {
-        public string id, docTagId, exampleCount, exampleScore, title, introductionHTML, syntaxHTML, 
-            parametersHTML, remarksHTML, helloWorldVersionsHTML, exampleText, isHelloWorldTopic;
+        public string id, docTagId, exampleCount, exampleScore, title, introductionHTML, syntaxHTML,
+            parametersHTML, remarksHTML, helloWorldVersionsHTML, exampleText, isHelloWorldTopic, markdownText;
        // public bool isHelloWorldTopic;
 
         public BLTopics(DALTopics o, string examples) //reikia DAL ir concat examples string
@@ -24,6 +24,8 @@ namespace StackDocsSharp.Models.BL
             helloWorldVersionsHTML = o.helloWorldVersionsHTML;
             isHelloWorldTopic = o.isHelloWorldTopic;
             exampleText = examples;
+            markdownText = o.introductionMark + "\n" + o.syntaxMark + "\n" + o.parametersMark + "\n" + o.remarksMark;
+
         }
     }
 }
