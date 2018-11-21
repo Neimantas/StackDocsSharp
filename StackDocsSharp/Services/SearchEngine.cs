@@ -25,7 +25,7 @@ namespace StackDocsSharp.Services
 
             foreach(BLTopics topic in topicsList)//search each topic and get the string with the text, title and id
             {
-                SearchResult obj = new SearchResult(topic.id, topic.title, topic.markdownText);
+                SearchResult obj = new SearchResult(topic.id, topic.title, topic.introductionPlain);
                 results.Add(obj);
             }
             return results;
@@ -38,7 +38,7 @@ namespace StackDocsSharp.Services
             return list;
         }
 
-        public string GetRelevantText(string text)//todo
+        public string GetDescription(string text)//todo
         {
             return null;
         }
