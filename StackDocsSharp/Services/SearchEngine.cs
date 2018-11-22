@@ -9,11 +9,9 @@ namespace StackDocsSharp.Services
 {
     public class SearchEngine//TODO HTML remover
     {
-        private Higher _higher;
-
-
         public List<SearchResult> Search(string args)
         {
+            Higher _higher = new Higher();
             List<SearchResult> results = new List<SearchResult>();
             List<CrudArgs> argsC = null;
             foreach(string search in ParseSearchQuery(args))
@@ -25,7 +23,8 @@ namespace StackDocsSharp.Services
 
             foreach(BLTopics topic in topicsList)//search each topic and get the string with the text, title and id
             {
-                SearchResult obj = new SearchResult(topic.id, topic.title, topic.introductionPlain);
+                string description = GetDescription(topic.introductionPlain, topic.remarksPlain);
+                SearchResult obj = new SearchResult(topic.id, topic.title, description);//may need more text
                 results.Add(obj);
             }
             return results;
@@ -38,8 +37,12 @@ namespace StackDocsSharp.Services
             return list;
         }
 
-        public string GetDescription(string text)//todo
+        public string GetDescription(string introduction, string remarks)//todo
         {
+            if (introduction != null || introduction != "")
+            {
+
+            }
             return null;
         }
     }

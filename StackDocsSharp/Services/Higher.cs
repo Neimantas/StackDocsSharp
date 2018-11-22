@@ -8,15 +8,9 @@ namespace StackDocsSharp.Services
 {
     public class Higher : IHigher
     {
-        private Lower _lower;
-
-        public Higher()
-        {
-            _lower = new Lower();
-        }
-
         public List<string> GetTopicsList()
         {
+            Lower _lower = new Lower();
             List<string> listTopics = new List<string>();
             List<DALDoctags> list = _lower.ReadDALDoctags(new List<CrudArgs>());
 
@@ -28,8 +22,9 @@ namespace StackDocsSharp.Services
             return listTopics;
         }
 
-        public List<BLTopics> GetTopics(List<CrudArgs> args)
+        public List<BLTopics> GetTopics(List<CrudArgs> args = null)
         {
+            Lower _lower = new Lower();
             List<BLTopics> topicsFormatted = new List<BLTopics>();
             List<DALTopics> dalTopics = _lower.ReadDALTopics(args);
             foreach (DALTopics topic in dalTopics)
@@ -49,6 +44,7 @@ namespace StackDocsSharp.Services
 
         public string ConcatExamplesByTopicId(string id)//sumeta i viena stringa examples
         {
+            Lower _lower = new Lower();
             List<DALExamples> list = _lower.ReadDALExamples(new List<CrudArgs>() { new CrudArgs("DocTopicId", "=", id) } );
             string concat = "";
             foreach (DALExamples obj in list)

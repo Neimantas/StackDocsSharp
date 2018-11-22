@@ -9,10 +9,10 @@ namespace StackDocsSharp.Services
 {
     public class Lower : ILower
     {
-        public List<DALTopics> ReadDALTopics(List<CrudArgs> args)
+        public List<DALTopics> ReadDALTopics(List<CrudArgs> args = null)
         {
-            CRUD readData = new CRUD();
-            DataRow[] rows = readData.Read("Topics", args).Select();
+            CRUD _crud = new CRUD();
+            DataRow[] rows = _crud.Read("Topics", args).Select();
             List<DALTopics> list = new List<DALTopics>();
             foreach (DataRow dataRow in rows)
             {
@@ -21,10 +21,10 @@ namespace StackDocsSharp.Services
             return list;
         }
 
-        public List<DALDoctags> ReadDALDoctags(List<CrudArgs> args)
+        public List<DALDoctags> ReadDALDoctags(List<CrudArgs> args = null)
         {
-            CRUD readData = new CRUD();
-            DataRow[] rows = readData.Read("DocTags", args).Select();
+            CRUD _crud = new CRUD();
+            DataRow[] rows = _crud.Read("DocTags", args).Select();
             List<DALDoctags> list = new List<DALDoctags>();
             foreach (DataRow dataRow in rows)
             {
@@ -33,10 +33,10 @@ namespace StackDocsSharp.Services
             return list;
         }
 
-        public List<DALExamples> ReadDALExamples(List<CrudArgs> args)
+        public List<DALExamples> ReadDALExamples(List<CrudArgs> args = null)
         {
-            CRUD readData = new CRUD();
-            DataRow[] rows = readData.Read("Examples", args).Select();
+            CRUD _crud = new CRUD();
+            DataRow[] rows = _crud.Read("Examples", args).Select();
             List<DALExamples> list = new List<DALExamples>();
             foreach (DataRow dataRow in rows)
             {

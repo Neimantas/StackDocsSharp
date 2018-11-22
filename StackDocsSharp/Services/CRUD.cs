@@ -18,8 +18,10 @@ namespace StackDocsSharp.Services
             var conn = db.GetConnection();
             conn.Open();
 
-            SQLiteCommand cmd = new SQLiteCommand(conn);
-            cmd.CommandText = "SELECT * FROM " + table + WhereStringBuilder(args) + rowLimit + ";";
+            SQLiteCommand cmd = new SQLiteCommand(conn)
+            {
+                CommandText = "SELECT * FROM " + table + WhereStringBuilder(args) + rowLimit + ";"
+            };
             SQLiteDataReader reader = cmd.ExecuteReader();
             DataTable tableSchema = reader.GetSchemaTable();
             DataTable dt = new DataTable();
@@ -28,10 +30,12 @@ namespace StackDocsSharp.Services
             foreach (DataRow row in tableSchema.Rows)
             {
                 string columnName = System.Convert.ToString(row["ColumnName"]);
-                DataColumn column = new DataColumn(columnName, (Type)(row["DataType"]));
-                column.Unique = (bool)row["IsUnique"];
-                column.AllowDBNull = (bool)row["AllowDBNull"];
-                column.AutoIncrement = (bool)row["IsAutoIncrement"];
+                DataColumn column = new DataColumn(columnName, (Type)row["DataType"])
+                {
+                    Unique = (bool)row["IsUnique"],
+                    AllowDBNull = (bool)row["AllowDBNull"],
+                    AutoIncrement = (bool)row["IsAutoIncrement"]
+                };
                 columnList.Add(column);
                 dt.Columns.Add(column);
             }
@@ -52,7 +56,7 @@ namespace StackDocsSharp.Services
         private string WhereStringBuilder(List<CrudArgs> args)
         {
             string whereString = " Where 1=1";
-            if (args.Count > 0)
+            if (args.Count > 0 || args != null)
             {
                 for (int i = 0; i < args.Count; i++)
                 {
