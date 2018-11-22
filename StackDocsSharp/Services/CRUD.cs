@@ -12,14 +12,14 @@ namespace StackDocsSharp.Services
         {
         }
 
-        public DataTable Read(string table, List<CrudArgs> args)
+        public DataTable Read(string table, List<CrudArgs> args, string rowLimit="")
         {
             DataBase db = new DataBase();
             var conn = db.GetConnection();
             conn.Open();
 
             SQLiteCommand cmd = new SQLiteCommand(conn);
-            cmd.CommandText = "SELECT * FROM " + table + WhereStringBuilder(args) + ";";
+            cmd.CommandText = "SELECT * FROM " + table + WhereStringBuilder(args) + rowLimit + ";";
             SQLiteDataReader reader = cmd.ExecuteReader();
             DataTable tableSchema = reader.GetSchemaTable();
             DataTable dt = new DataTable();
