@@ -257,6 +257,7 @@
     <Compile Include="Services\IHigher.cs" />
     <Compile Include="Services\ILower.cs" />
     <Compile Include="Services\Lower.cs" />
+    <Compile Include="Services\paging.cs" />
     <Compile Include="Services\SearchEngine.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
