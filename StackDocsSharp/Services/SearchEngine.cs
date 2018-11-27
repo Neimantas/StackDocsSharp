@@ -7,7 +7,7 @@ using System.Web;
 
 namespace StackDocsSharp.Services
 {
-    public class SearchEngine//TODO HTML remover
+    public class SearchEngine
     {
         public List<SearchResult> Search(string args)
         {
@@ -20,11 +20,10 @@ namespace StackDocsSharp.Services
                 argsC.Add(arg);
             }
             List<BLTopics> topicsList = _higher.GetTopics(argsC);
-
             foreach(BLTopics topic in topicsList)//search each topic and get the string with the text, title and id
             {
-                string description = GetDescription(topic.introductionPlain, topic.remarksPlain);
-                SearchResult obj = new SearchResult(topic.id, topic.title, description);//may need more text
+                string description = GetDescription(topic.introductionPlain);
+                SearchResult obj = new SearchResult(topic.id, topic.title, description);
                 results.Add(obj);
             }
             return results;
@@ -37,11 +36,12 @@ namespace StackDocsSharp.Services
             return list;
         }
 
-        public string GetDescription(string introduction, string remarks)//todo
+        public string GetDescription(string introduction)
         {
             if (introduction != null || introduction != "")
             {
-
+                int endOfSentence = introduction.IndexOf(".");
+                return introduction.Substring(0, endOfSentence);
             }
             return null;
         }
