@@ -15,7 +15,7 @@ namespace StackDocsSharp
     public partial class _Default : Page
     {
         private ILower _lower;
-        private int lastTopicID;
+        private static int lastTopicID;
         private int pagesize;
 
 
