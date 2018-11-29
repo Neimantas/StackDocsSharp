@@ -54,12 +54,14 @@ namespace StackDocsSharp
         {
             pagesize = gwtopics.PageSize;
             gwtopics.PageIndex = e.NewPageIndex;
+            
 
             string topicsKey = "ten_topics";
             
             var resultTopics = GetTenTopics(DropDownList1.SelectedValue);
-            
-            _cache.SetObjectToCache(topicsKey, resultTopics);
+
+            if (Cache.Get(topicsKey) == null)
+            { _cache.SetObjectToCache(topicsKey, resultTopics); }
 
             gwtopics.DataSource = _cache.GetObjectFromCache(topicsKey);
             gwtopics.DataBind();
