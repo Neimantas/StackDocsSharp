@@ -24,6 +24,7 @@ namespace StackDocsSharp
             container.Register<IHigher, Higher>();
             container.Register<IDataBase, DataBase>();
             container.Register<ILower, Lower>();
+            container.Register<ICache, Caching>();
 
             container.Verify();
 
