@@ -246,6 +246,7 @@
     <Compile Include="Models\BL\BLTopics.cs" />
     <Compile Include="Models\BL\SearchResult.cs" />
     <Compile Include="Models\Const\CrudArgs.cs" />
+    <Compile Include="Models\Const\PagingArgs.cs" />
     <Compile Include="Models\DAL\DALDoctags.cs" />
     <Compile Include="Models\DAL\DALExamples.cs" />
     <Compile Include="Models\DAL\DALTopics.cs" />
