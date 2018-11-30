@@ -5,28 +5,37 @@ using System.Web;
 using System.Data;
 using System.Data.SQLite;
 using StackDocsSharp.Models.Const;
+using StackDocsSharp.Services;
 
 namespace StackDocsSharp.Services
 {
     public class Paging
     {
-        public int lastRowID;
-
+        //public int lastRowID;
+        private IDataBase _conn;
         CRUD readData = new CRUD();
 
-        public DataTable GetNumOfRows(string table, string uIdCollumn, int pageSize, List<CrudArgs> args = null)
+        public Paging()
         {
-            string rowlimit = "order by id Limit " + pageSize.ToString();
-            var firstTen = readData.Read(table,args,rowlimit);
-            int rowCount = firstTen.Rows.Count;
-            lastRowID = Convert.ToInt32(firstTen.Rows[(rowCount-1)][firstTen.Columns.IndexOf(uIdCollumn)]);
+            _conn = ContainerInjector.Container.GetInstance<IDataBase>();
+        }
+
+        public DataTable GetNumOfRows(PagingArgs pagingArgs, List<CrudArgs> args = null)
+        {
+
+            string rowlimit = "order by id Limit " + pagingArgs.SkipRows.ToString() + "," + pagingArgs.TakeRows.ToString();
+            var firstTen = readData.Read(pagingArgs.TableName, args, rowlimit);
+            //int rowCount = firstTen.Rows.Count;
+            //lastRowID = Convert.ToInt32(firstTen.Rows[(rowCount-1)][firstTen.Columns.IndexOf(uIdCollumn)]);
             return firstTen;
         }
 
-        public int GetTotalCount(string table,List<CrudArgs> args=null)
+        public int GetTotalCount(string table, List<CrudArgs> args = null)
         {
-            DataBase db = new DataBase();
-            var conn = db.GetConnection();
+            var conn = _conn.GetConnection();
+
+            //DataBase db = new DataBase();
+            //var conn = db.GetConnection();
             conn.Open();
 
             SQLiteCommand cmd = new SQLiteCommand(conn);
