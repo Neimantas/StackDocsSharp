@@ -11,7 +11,7 @@ namespace StackDocsSharp.Services
 {
     public class Paging
     {
-        //public int lastRowID;
+        
         private IDataBase _conn;
         CRUD readData = new CRUD();
 
@@ -22,33 +22,24 @@ namespace StackDocsSharp.Services
 
         public DataTable GetNumOfRows(PagingArgs pagingArgs, List<CrudArgs> args = null)
         {
-
             string rowlimit = "order by id Limit " + pagingArgs.SkipRows.ToString() + "," + pagingArgs.TakeRows.ToString();
-            var firstTen = readData.Read(pagingArgs.TableName, args, rowlimit);
-            //int rowCount = firstTen.Rows.Count;
-            //lastRowID = Convert.ToInt32(firstTen.Rows[(rowCount-1)][firstTen.Columns.IndexOf(uIdCollumn)]);
-            return firstTen;
+            var numOfRows = readData.Read(pagingArgs.TableName, args, rowlimit);
+            return numOfRows;
         }
 
         public int GetTotalCount(string table, List<CrudArgs> args = null)
         {
             var conn = _conn.GetConnection();
-
-            //DataBase db = new DataBase();
-            //var conn = db.GetConnection();
             conn.Open();
 
             SQLiteCommand cmd = new SQLiteCommand(conn);
-            cmd.CommandText = "SELECT COUNT(*) FROM " + table + WhereStringBuilder(args);
-            SQLiteDataReader reader = cmd.ExecuteReader();
-
             DataTable dt = new DataTable();
 
+            cmd.CommandText = "SELECT COUNT(*) FROM " + table + WhereStringBuilder(args);
+            SQLiteDataReader reader = cmd.ExecuteReader();
             dt.Load(reader);
 
             return Convert.ToInt32(dt.Rows[0][0].ToString());
-
-
         }
 
         private string WhereStringBuilder(List<CrudArgs> args)

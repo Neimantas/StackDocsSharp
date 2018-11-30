@@ -16,7 +16,7 @@ namespace StackDocsSharp
     {
         private ILower _lower;
         private ICache _cache;
-        private static int lastTopicID;
+        //private static int lastTopicID;
         private int pagesize;
 
 
@@ -31,8 +31,8 @@ namespace StackDocsSharp
 
             if (!Page.IsPostBack)
             {
-                
-                
+
+
                 var dropDown = _lower.ReadDALDoctags(new List<CrudArgs> { });
                 var readDocTags = new CRUD();
                 readDocTags.Read("DocTags", new List<CrudArgs> { });
@@ -44,7 +44,7 @@ namespace StackDocsSharp
                     DropDownList1.Items.Add(new ListItem(language.title, language.id));
                 }
             }
-            
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -54,16 +54,16 @@ namespace StackDocsSharp
         {
             pagesize = gwtopics.PageSize;
             gwtopics.PageIndex = e.NewPageIndex;
-            
 
-            string topicsKey = "ten_topics";
-            
-            var resultTopics = GetTenTopics(DropDownList1.SelectedValue);
+            //string topicsKey = "topics"+ gwtopics.PageIndex;
 
-            if (Cache.Get(topicsKey) == null)
-            { _cache.SetObjectToCache(topicsKey, resultTopics); }
+            var resultTopics = GetTopics(DropDownList1.SelectedValue);
 
-            gwtopics.DataSource = _cache.GetObjectFromCache(topicsKey);
+            //if (Cache.Get(topicsKey) == null)
+            //{ _cache.SetObjectToCache(topicsKey, resultTopics); }
+
+            gwtopics.DataSource = resultTopics;
+                //_cache.GetObjectFromCache(topicsKey);
             gwtopics.DataBind();
 
         }
@@ -73,37 +73,69 @@ namespace StackDocsSharp
             Paging totalCount = new Paging();
             pagesize = gwtopics.PageSize;
 
-            if(!string.IsNullOrEmpty(DropDownList1.SelectedValue))
-            { 
-            List<CrudArgs> args = new List<CrudArgs> { new CrudArgs("DocTagId", "=", DropDownList1.SelectedValue) };
-            gwtopics.VirtualItemCount = totalCount.GetTotalCount("Topics", args);
+            if (!string.IsNullOrEmpty(DropDownList1.SelectedValue))
+            {
+                List<CrudArgs> args = new List<CrudArgs> { new CrudArgs("DocTagId", "=", DropDownList1.SelectedValue) };
+                gwtopics.VirtualItemCount = totalCount.GetTotalCount("Topics", args);
 
-            GetFirstTenTopics(DropDownList1.SelectedValue);
+                gwtopics.DataSource = GetFirstTopics(DropDownList1.SelectedValue);
+                gwtopics.DataBind();
+
             }
         }
 
-        protected void GetFirstTenTopics(string lang)
+        protected DataTable GetFirstTopics(string lang)
         {
-            Paging firstTenRows = new Paging();
+            int currIndex = gwtopics.PageIndex;
+            string topicIdKey = "topicId" + currIndex;
+
+            Paging firstRows = new Paging();
             List<CrudArgs> args = new List<CrudArgs> { new CrudArgs("DocTagId", "=", lang) };
+            PagingArgs pArgs = new PagingArgs() { TableName = "Topics", SkipRows = 0, TakeRows = pagesize };
 
-            var topics = firstTenRows.GetNumOfRows("Topics", "Id", pagesize, args);
-            lastTopicID = firstTenRows.lastRowID;
-                 
+            var topics = firstRows.GetNumOfRows(pArgs, args);
+            int rowCount = topics.Rows.Count;
+            int lastTopicID = Convert.ToInt32(topics.Rows[(rowCount - 1)][topics.Columns.IndexOf("Id")]);
 
-            gwtopics.DataSource = topics;
-            gwtopics.DataBind();
+            if (Cache.Get(topicIdKey) == null)
+            { _cache.SetObjectToCache(topicIdKey, lastTopicID); }
+
+            return topics;
         }
 
-        protected DataTable GetTenTopics(string lang)
+        protected DataTable GetTopics(string lang)
         {
-            Paging tenRows = new Paging();
-            List<CrudArgs> args = new List<CrudArgs> { (new CrudArgs("DocTagId", "=", lang)), (new CrudArgs("ID", ">", lastTopicID.ToString())) };
-            var topics = tenRows.GetNumOfRows("Topics", "Id" ,pagesize, args);
-            lastTopicID = tenRows.lastRowID;
-            return topics;
-            //gwtopics.DataSource = topics;
-            //gwtopics.DataBind();
+            int currIndex = gwtopics.PageIndex;
+            int prevIndex = gwtopics.PageIndex - 1;
+            string topicIdKey = "topicId" + currIndex;
+            
+            if (currIndex > 0)
+            {
+                int prevTopicId = (int)Cache.Get("topicId" + prevIndex);
+
+                Paging rows = new Paging();
+                List<CrudArgs> args = new List<CrudArgs> { (new CrudArgs("DocTagId", "=", lang)), (new CrudArgs("ID", ">", prevTopicId.ToString())) };
+                PagingArgs pArgs = new PagingArgs() { TableName = "Topics", SkipRows = 0, TakeRows = pagesize };
+
+                var topics = rows.GetNumOfRows(pArgs, args);
+                                
+                int rowCount = topics.Rows.Count;
+                int lastTopicID = Convert.ToInt32(topics.Rows[(rowCount - 1)][topics.Columns.IndexOf("Id")]);
+
+                if (Cache.Get(topicIdKey) == null)
+                { _cache.SetObjectToCache(topicIdKey, lastTopicID); }
+
+                return topics;
+            }
+            
+            else
+            {
+                return GetFirstTopics(DropDownList1.SelectedValue);
+            }
+
+            
+                
+            
         }
 
     }
