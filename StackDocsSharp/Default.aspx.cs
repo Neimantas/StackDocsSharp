@@ -59,7 +59,6 @@ namespace StackDocsSharp
         protected void Selection_Change(object sender, EventArgs e)
         {
             Paging totalCount = new Paging();
-            pagesize = gwtopics.PageSize;
             gwtopics.PageIndex = 0;
 
             if (!string.IsNullOrEmpty(DropDownList1.SelectedValue))
