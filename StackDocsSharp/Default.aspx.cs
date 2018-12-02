@@ -16,13 +16,7 @@ namespace StackDocsSharp
     {
         private ILower _lower;
         private ICache _cache;
-<<<<<<< Updated upstream
-        private static int lastTopicID;
-        private int pagesize;
-
-=======
         private static int pagesize;
->>>>>>> Stashed changes
 
         public _Default()
         {
@@ -36,11 +30,6 @@ namespace StackDocsSharp
 
             if (!Page.IsPostBack)
             {
-<<<<<<< Updated upstream
-                
-                
-=======
->>>>>>> Stashed changes
                 var dropDown = _lower.ReadDALDoctags(new List<CrudArgs> { });
                 var readDocTags = new CRUD();
                 readDocTags.Read("DocTags", new List<CrudArgs> { });
@@ -52,10 +41,6 @@ namespace StackDocsSharp
                     DropDownList1.Items.Add(new ListItem(language.title, language.id));
                 }
             }
-<<<<<<< Updated upstream
-            
-=======
->>>>>>> Stashed changes
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -64,22 +49,10 @@ namespace StackDocsSharp
         protected void GwTopics_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gwtopics.PageIndex = e.NewPageIndex;
-            
 
-<<<<<<< Updated upstream
-            string topicsKey = "ten_topics";
-            
-            var resultTopics = GetTenTopics(DropDownList1.SelectedValue);
-
-            if (Cache.Get(topicsKey) == null)
-            { _cache.SetObjectToCache(topicsKey, resultTopics); }
-
-            gwtopics.DataSource = _cache.GetObjectFromCache(topicsKey);
-=======
             var resultTopics = GetTopics(DropDownList1.SelectedValue);
 
             gwtopics.DataSource = resultTopics;
->>>>>>> Stashed changes
             gwtopics.DataBind();
         }
 
@@ -89,25 +62,6 @@ namespace StackDocsSharp
             pagesize = gwtopics.PageSize;
             gwtopics.PageIndex = 0;
 
-<<<<<<< Updated upstream
-            if(!string.IsNullOrEmpty(DropDownList1.SelectedValue))
-            { 
-            List<CrudArgs> args = new List<CrudArgs> { new CrudArgs("DocTagId", "=", DropDownList1.SelectedValue) };
-            gwtopics.VirtualItemCount = totalCount.GetTotalCount("Topics", args);
-
-            GetFirstTenTopics(DropDownList1.SelectedValue);
-            }
-        }
-
-        protected void GetFirstTenTopics(string lang)
-        {
-            Paging firstTenRows = new Paging();
-            List<CrudArgs> args = new List<CrudArgs> { new CrudArgs("DocTagId", "=", lang) };
-
-            var topics = firstTenRows.GetNumOfRows("Topics", "Id", pagesize, args);
-            lastTopicID = firstTenRows.lastRowID;
-                 
-=======
             if (!string.IsNullOrEmpty(DropDownList1.SelectedValue))
             {
                 List<CrudArgs> args = new List<CrudArgs> { new CrudArgs("DocTagId", "=", DropDownList1.SelectedValue) };
@@ -140,25 +94,11 @@ namespace StackDocsSharp
             var topics = rows.GetNumOfRows(pArgs, args);
             int rowCount = topics.Rows.Count;
             int lastTopicID = Convert.ToInt32(topics.Rows[(rowCount - 1)][topics.Columns.IndexOf("Id")]);
->>>>>>> Stashed changes
 
-            gwtopics.DataSource = topics;
-            gwtopics.DataBind();
-        }
-<<<<<<< Updated upstream
+            if (Cache.Get(topicIdKey) == null)
+            { _cache.SetObjectToCache(topicIdKey, lastTopicID); }
 
-        protected DataTable GetTenTopics(string lang)
-        {
-            Paging tenRows = new Paging();
-            List<CrudArgs> args = new List<CrudArgs> { (new CrudArgs("DocTagId", "=", lang)), (new CrudArgs("ID", ">", lastTopicID.ToString())) };
-            var topics = tenRows.GetNumOfRows("Topics", "Id" ,pagesize, args);
-            lastTopicID = tenRows.lastRowID;
             return topics;
-            //gwtopics.DataSource = topics;
-            //gwtopics.DataBind();
         }
-
-=======
->>>>>>> Stashed changes
     }
 }
