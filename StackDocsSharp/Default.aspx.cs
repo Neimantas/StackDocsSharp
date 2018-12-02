@@ -16,9 +16,13 @@ namespace StackDocsSharp
     {
         private ILower _lower;
         private ICache _cache;
+<<<<<<< Updated upstream
         private static int lastTopicID;
         private int pagesize;
 
+=======
+        private static int pagesize;
+>>>>>>> Stashed changes
 
         public _Default()
         {
@@ -28,11 +32,15 @@ namespace StackDocsSharp
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            pagesize = gwtopics.PageSize;
 
             if (!Page.IsPostBack)
             {
+<<<<<<< Updated upstream
                 
                 
+=======
+>>>>>>> Stashed changes
                 var dropDown = _lower.ReadDALDoctags(new List<CrudArgs> { });
                 var readDocTags = new CRUD();
                 readDocTags.Read("DocTags", new List<CrudArgs> { });
@@ -44,7 +52,10 @@ namespace StackDocsSharp
                     DropDownList1.Items.Add(new ListItem(language.title, language.id));
                 }
             }
+<<<<<<< Updated upstream
             
+=======
+>>>>>>> Stashed changes
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -52,10 +63,10 @@ namespace StackDocsSharp
 
         protected void GwTopics_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            pagesize = gwtopics.PageSize;
             gwtopics.PageIndex = e.NewPageIndex;
             
 
+<<<<<<< Updated upstream
             string topicsKey = "ten_topics";
             
             var resultTopics = GetTenTopics(DropDownList1.SelectedValue);
@@ -64,15 +75,21 @@ namespace StackDocsSharp
             { _cache.SetObjectToCache(topicsKey, resultTopics); }
 
             gwtopics.DataSource = _cache.GetObjectFromCache(topicsKey);
-            gwtopics.DataBind();
+=======
+            var resultTopics = GetTopics(DropDownList1.SelectedValue);
 
+            gwtopics.DataSource = resultTopics;
+>>>>>>> Stashed changes
+            gwtopics.DataBind();
         }
 
         protected void Selection_Change(object sender, EventArgs e)
         {
             Paging totalCount = new Paging();
             pagesize = gwtopics.PageSize;
+            gwtopics.PageIndex = 0;
 
+<<<<<<< Updated upstream
             if(!string.IsNullOrEmpty(DropDownList1.SelectedValue))
             { 
             List<CrudArgs> args = new List<CrudArgs> { new CrudArgs("DocTagId", "=", DropDownList1.SelectedValue) };
@@ -90,10 +107,45 @@ namespace StackDocsSharp
             var topics = firstTenRows.GetNumOfRows("Topics", "Id", pagesize, args);
             lastTopicID = firstTenRows.lastRowID;
                  
+=======
+            if (!string.IsNullOrEmpty(DropDownList1.SelectedValue))
+            {
+                List<CrudArgs> args = new List<CrudArgs> { new CrudArgs("DocTagId", "=", DropDownList1.SelectedValue) };
+                gwtopics.VirtualItemCount = totalCount.GetTotalCount("Topics", args);
+
+                gwtopics.DataSource = GetTopics(DropDownList1.SelectedValue);
+                gwtopics.DataBind();
+            }
+        }
+
+        protected DataTable GetTopics(string lang)
+        {
+            int currIndex = gwtopics.PageIndex;
+            int prevIndex = gwtopics.PageIndex - 1;
+            string topicIdKey = lang + currIndex;
+            int prevTopicId = 0;
+            int skip = currIndex * pagesize;
+
+            Paging rows = new Paging();
+
+            if (Cache.Get(lang + prevIndex) != null)
+            {
+                prevTopicId = (int)Cache.Get(lang + prevIndex);
+                skip = 0;
+            }
+
+            List<CrudArgs> args = new List<CrudArgs> { (new CrudArgs("DocTagId", "=", lang)), (new CrudArgs("ID", ">", prevTopicId.ToString())) };
+            PagingArgs pArgs = new PagingArgs() { TableName = "Topics", SkipRows = skip, TakeRows = pagesize };
+
+            var topics = rows.GetNumOfRows(pArgs, args);
+            int rowCount = topics.Rows.Count;
+            int lastTopicID = Convert.ToInt32(topics.Rows[(rowCount - 1)][topics.Columns.IndexOf("Id")]);
+>>>>>>> Stashed changes
 
             gwtopics.DataSource = topics;
             gwtopics.DataBind();
         }
+<<<<<<< Updated upstream
 
         protected DataTable GetTenTopics(string lang)
         {
@@ -106,5 +158,7 @@ namespace StackDocsSharp
             //gwtopics.DataBind();
         }
 
+=======
+>>>>>>> Stashed changes
     }
 }
