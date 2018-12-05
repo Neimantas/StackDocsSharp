@@ -8,6 +8,11 @@ namespace StackDocsSharp.Services
 {
     public class CRUD
     {
+        public CRUD()
+        {
+            Settings.DefaultSelectCount++;
+        }
+
         public void Create()
         {
         }

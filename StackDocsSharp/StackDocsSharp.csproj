@@ -263,6 +263,7 @@
     <Compile Include="Services\Lower.cs" />
     <Compile Include="Services\Paging.cs" />
     <Compile Include="Services\SearchEngine.cs" />
+    <Compile Include="Services\Settings.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

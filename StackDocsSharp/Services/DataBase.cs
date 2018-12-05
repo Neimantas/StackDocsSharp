@@ -10,7 +10,7 @@ namespace StackDocsSharp.Services
 {
     public class DataBase : IDataBase
     {
-        private string _conUrl = "Data source = C:\\Users\\" + Environment.UserName + "\\Documents\\StackDocsSharp\\Database\\DB.db ; New=false; Foreign Keys = True;";
+        private string _conUrl = Settings.DefaultConnectionString;
 
         public DataBase()
         {
