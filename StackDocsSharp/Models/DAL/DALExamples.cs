@@ -11,8 +11,8 @@ namespace StackDocsSharp.Models.DAL
         {
             docTopicId = row["DocTopicId"].ToString();
             id = row["Id"].ToString();
-            title = (string)row["Title"];
-            bodyHTML = (string)row["BodyHtml"];
+            title = row["Title"].ToString();
+            bodyHTML = row["BodyHtml"].ToString();
             isPinned = (bool)row["IsPinned"];
         }
     }

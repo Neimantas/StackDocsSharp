@@ -16,17 +16,17 @@ namespace StackDocsSharp.Models.DAL
         {
             docTagId = row["DocTagId"].ToString();
             id = row["Id"].ToString();
-            title = (string)row["Title"];
-            introductionHTML = (string)row["IntroductionHtml"];
-            parametersHTML = (string)row["ParametersHtml"];
-            remarksHTML = (string)row["RemarksHtml"];
-            syntaxHTML = (string)row["SyntaxHtml"];
-            helloWorldVersionsHTML = (string)row["HelloWorldVersionsHtml"];
+            title = row["Title"].ToString();
+            introductionHTML = row["IntroductionHtml"].ToString();
+            parametersHTML = row["ParametersHtml"].ToString();
+            remarksHTML = row["RemarksHtml"].ToString();
+            syntaxHTML = row["SyntaxHtml"].ToString();
+            helloWorldVersionsHTML = row["HelloWorldVersionsHtml"].ToString();
             isHelloWorldTopic = row["IsHelloWorldTopic"].ToString();
-            introductionMark = (string)row["IntroductionMarkdown"];
-            syntaxMark = (string)row["SyntaxMarkdown"];
-            parametersMark = (string)row["ParametersMardown"];
-            remarksMark = (string)row["RemarksMark"];
+            introductionMark = row["IntroductionMarkdown"].ToString();
+            syntaxMark = row["SyntaxMarkdown"].ToString();
+            parametersMark = row["ParametersMarkdown"].ToString();
+            remarksMark = row["RemarksMarkdown"].ToString();
         }
     }
 }
