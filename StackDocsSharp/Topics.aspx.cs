@@ -7,13 +7,14 @@ using System.Web.UI.WebControls;
 using StackDocsSharp.Services;
 using StackDocsSharp.Models.Const;
 using SimpleInjector;
+using StackDocsSharp.Models.BL;
 
 namespace StackDocsSharp
 {
     public partial class Topics : System.Web.UI.Page
     {
         private IHigher _higher;
-
+        private BLTopics topic;
         public Topics()
         {
             _higher = ContainerInjector.Container.GetInstance<IHigher>();
@@ -22,41 +23,24 @@ namespace StackDocsSharp
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!Page.IsPostBack)
-            { 
-            TopicTitle.Text = Request["Title"];
-            GetTopicsInfo(Request.QueryString["Title"], Request.QueryString["DocTagID"]);
-            modallbl.Text = Server.HtmlDecode(GetExamples(Request.QueryString["ID"]));
-            }
-        }
-
-        protected string GetExamples(string TopicID) {
-            var readExamples = _higher.GetTopics(new List<CrudArgs> { new CrudArgs("Id", "=", TopicID) });
-            return readExamples[0].exampleText;
-          
-            
-        }
-
-        protected void GetTopicsInfo(string topicTitle, string ID)
-        {
-            var readTopics = new CRUD();
-           
-            List<CrudArgs> argCombo = new List<CrudArgs> { (new CrudArgs("Title", "=", topicTitle)), (new CrudArgs("DocTagID", "=", ID)) };
-            
-            var topicsData = readTopics.Read("Topics",argCombo);
-            
-
-            if (topicsData.Rows.Count > 0)
             {
-                lblHello.Text = Server.HtmlDecode(topicsData.Rows[0]["HelloWorldVersionsHtml"].ToString());
-                lblIntro.Text = Server.HtmlDecode(topicsData.Rows[0]["IntroductionHTML"].ToString());
-                lblParameters.Text = Server.HtmlDecode(topicsData.Rows[0]["ParametersHtml"].ToString());
-                lblRemarks.Text = Server.HtmlDecode(topicsData.Rows[0]["RemarksHtml"].ToString());
-                lblSyntax.Text = Server.HtmlDecode(topicsData.Rows[0]["SyntaxHtml"].ToString());
+                List<BLTopics> topiclist = _higher.GetTopics(new List<CrudArgs> { new CrudArgs("Id", "=", Request.QueryString["ID"]) });
+                if(topiclist.Count == 1)
+                {
+                    topic = topiclist[0];
+                    TopicTitle.Text = topic.title;
+                    lblHello.Text = topic.helloWorldVersionsHTML;
+                    lblIntro.Text = topic.introductionHTML;
+                    lblParameters.Text = topic.parametersHTML;
+                    lblRemarks.Text = topic.remarksHTML;
+                    lblSyntax.Text = topic.syntaxHTML;
+                    modallbl.Text = topic.exampleText;
+                }
+                else
+                {
+                    Response.Redirect("Default.aspx");
+                }
             }
-            else {Response.Redirect("~/Default.aspx");}
         }
-
-
-
     }
 }

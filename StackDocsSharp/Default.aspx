@@ -11,7 +11,7 @@
                 runat="server" DataKeyNames="DocTagID" AutoGenerateColumns="false" GridLines="None">
                 <PagerSettings Mode="Numeric" PageButtonCount="5" FirstPageText="First" LastPageText="Last" />
                  <Columns>
-                    <asp:HyperLinkField DataTextField="Title" HeaderText="Topics" DataNavigateUrlFormatString="~/Topics.aspx?Title={0}&DocTagID={1}&Id={2}" DataNavigateUrlFields="Title,DocTagID,Id" />
+                    <asp:HyperLinkField DataTextField="Title" HeaderText="Topics" DataNavigateUrlFormatString="~/Topics.aspx?Title={0}&Id={1}" DataNavigateUrlFields="Title,Id" />
                 </Columns>
             </asp:GridView>
         </div>

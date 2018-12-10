@@ -207,6 +207,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="SearchPage.aspx" />
     <Content Include="Site.Master" />
     <Content Include="Topics.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -251,6 +252,13 @@
     <Compile Include="Models\DAL\DALExamples.cs" />
     <Compile Include="Models\DAL\DALTopics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchPage.aspx.cs">
+      <DependentUpon>SearchPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchPage.aspx.designer.cs">
+      <DependentUpon>SearchPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Services\Caching.cs" />
     <Compile Include="Services\ContainerInjector.cs" />
     <Compile Include="Services\CRUD.cs" />
